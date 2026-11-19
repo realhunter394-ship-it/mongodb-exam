@@ -1,0 +1,24 @@
+Output:
+{
+  acknowledged: true,
+  insertedIds: { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }
+}
+
+
+Uncaught:
+
+SyntaxError: Missing semicolon. (1:22)
+
+> 1 | Get-ChildItem -Recurse "C:\backups\ticket_full"
+    |                       ^
+  2 |
+
+
+Uncaught:
+
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | mongorestore --uri="mongodb://localhost:27017/?replicaSet=rs0" --nsInclude="ticketDB.bookings" "C:\backups\ticket_full"
+    |                ^
+  2 |
+Ready

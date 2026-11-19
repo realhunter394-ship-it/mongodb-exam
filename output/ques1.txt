@@ -1,0 +1,309 @@
+Output:
+{
+  acknowledged: true,
+  insertedIds: { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5, '5': 6, '6': 7, '7': 8 }
+}
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'db_459k33bbb_459mxheer.movies',
+    parsedQuery: {
+      '$and': [ { genre: { '$eq': 'Drama' } }, { rating: { '$gte': 8 } } ]
+    },
+    indexFilterSet: false,
+    queryHash: '15A71CB8',
+    planCacheShapeHash: '15A71CB8',
+    planCacheKey: '0B965AF0',
+    optimizationTimeMillis: 0,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'COLLSCAN',
+      filter: {
+        '$and': [ { genre: { '$eq': 'Drama' } }, { rating: { '$gte': 8 } } ]
+      },
+      direction: 'forward'
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 2,
+    executionTimeMillis: 0,
+    totalKeysExamined: 0,
+    totalDocsExamined: 8,
+    executionStages: {
+      isCached: false,
+      stage: 'COLLSCAN',
+      filter: {
+        '$and': [ { genre: { '$eq': 'Drama' } }, { rating: { '$gte': 8 } } ]
+      },
+      nReturned: 2,
+      executionTimeMillisEstimate: 0,
+      works: 9,
+      advanced: 2,
+      needTime: 6,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      direction: 'forward',
+      docsExamined: 8
+    }
+  },
+  queryShapeHash: '61E18465FFD3829AB05A12EF23BCE35EC1B27A8F9DEF925103126ECE5466B309',
+  command: {
+    find: 'movies',
+    filter: { genre: 'Drama', rating: { '$gte': 8 } },
+    '$db': 'db_459k33bbb_459mxheer'
+  },
+  serverInfo: {
+    host: 'mongodb-65x54',
+    port: 27017,
+    version: '8.2.3',
+    gitVersion: '36f41c9c30a2f13f834d033ba03c3463c891fb01'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+
+genre_1_rating_-1
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'db_459k33bbb_459mxheer.movies',
+    parsedQuery: {
+      '$and': [ { genre: { '$eq': 'Drama' } }, { rating: { '$gte': 8 } } ]
+    },
+    indexFilterSet: false,
+    queryHash: '15A71CB8',
+    planCacheShapeHash: '15A71CB8',
+    planCacheKey: 'D8C65AB0',
+    optimizationTimeMillis: 0,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'FETCH',
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { genre: 1, rating: -1 },
+        indexName: 'genre_1_rating_-1',
+        isMultiKey: false,
+        multiKeyPaths: { genre: [], rating: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { genre: [ '["Drama", "Drama"]' ], rating: [ '[inf, 8]' ] }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 2,
+    executionTimeMillis: 0,
+    totalKeysExamined: 2,
+    totalDocsExamined: 2,
+    executionStages: {
+      isCached: false,
+      stage: 'FETCH',
+      nReturned: 2,
+      executionTimeMillisEstimate: 0,
+      works: 3,
+      advanced: 2,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      docsExamined: 2,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 2,
+        executionTimeMillisEstimate: 0,
+        works: 3,
+        advanced: 2,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: { genre: 1, rating: -1 },
+        indexName: 'genre_1_rating_-1',
+        isMultiKey: false,
+        multiKeyPaths: { genre: [], rating: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { genre: [ '["Drama", "Drama"]' ], rating: [ '[inf, 8]' ] },
+        keysExamined: 2,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  queryShapeHash: '61E18465FFD3829AB05A12EF23BCE35EC1B27A8F9DEF925103126ECE5466B309',
+  command: {
+    find: 'movies',
+    filter: { genre: 'Drama', rating: { '$gte': 8 } },
+    '$db': 'db_459k33bbb_459mxheer'
+  },
+  serverInfo: {
+    host: 'mongodb-65x54',
+    port: 27017,
+    version: '8.2.3',
+    gitVersion: '36f41c9c30a2f13f834d033ba03c3463c891fb01'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+
+
+rating_1_genre_1
+{ nIndexesWas: 3, ok: 1 }
+
+cast_1
+
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'db_459k33bbb_459mxheer.movies',
+    parsedQuery: { cast: { '$eq': 'Asha' } },
+    indexFilterSet: false,
+    queryHash: '1A5DC861',
+    planCacheShapeHash: '1A5DC861',
+    planCacheKey: '4BF41F88',
+    optimizationTimeMillis: 0,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'FETCH',
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { cast: 1 },
+        indexName: 'cast_1',
+        isMultiKey: true,
+        multiKeyPaths: { cast: [ 'cast' ] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { cast: [ '["Asha", "Asha"]' ] }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 3,
+    executionTimeMillis: 0,
+    totalKeysExamined: 3,
+    totalDocsExamined: 3,
+    executionStages: {
+      isCached: false,
+      stage: 'FETCH',
+      nReturned: 3,
+      executionTimeMillisEstimate: 0,
+      works: 4,
+      advanced: 3,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      docsExamined: 3,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 3,
+        executionTimeMillisEstimate: 0,
+        works: 4,
+        advanced: 3,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: { cast: 1 },
+        indexName: 'cast_1',
+        isMultiKey: true,
+        multiKeyPaths: { cast: [ 'cast' ] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { cast: [ '["Asha", "Asha"]' ] },
+        keysExamined: 3,
+        seeks: 1,
+        dupsTested: 3,
+        dupsDropped: 0
+      }
+    }
+  },
+  queryShapeHash: '67A9C5A0BE6F46C9C27C968BEC20A1002D18FF60FC8E01CEF9684BC997CD4AA5',
+  command: {
+    find: 'movies',
+    filter: { cast: 'Asha' },
+    '$db': 'db_459k33bbb_459mxheer'
+  },
+  serverInfo: {
+    host: 'mongodb-65x54',
+    port: 27017,
+    version: '8.2.3',
+    gitVersion: '36f41c9c30a2f13f834d033ba03c3463c891fb01'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+
+{ hidden_old: false, hidden_new: true, ok: 1 }
